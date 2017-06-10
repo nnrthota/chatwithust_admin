@@ -1,0 +1,208 @@
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="/assets/img/sidebar-2.jpg" >
+        <div class="sidebar-wrapper">
+            <div class="logo">
+              <img src="/chatwithust1.jpg">
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a >
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                      <div class="logo">  
+                     <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#myModal">add User </button>
+                    <i class="pe-7s-user"></i>
+                </div>
+                </li>
+                <li>
+                       <div class="logo"> 
+                        <i class="pe-7s-news-paper"></i>
+                        <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#del">remove User </button>
+                    </div>
+                </li>
+                <li>
+                    <a href="/admin/getChatHistory">
+                        <i class="pe-7s-note2"></i>
+                        <p>chatHistory</p>
+                    </a>
+                </li>
+                 <li>
+                    <a href="/admin/listUsers">
+                        <i class="pe-7s-note2"></i>
+                        <p>listUsers</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a href="/">
+                        <i class="pe-7s-rocket"></i>
+                        <p>chatwithUST</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                                <p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/admin/login">
+                                <p>Log out</p>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table  class = "table table-hover">
+                             {{#if items}}
+                                  <tr class="danger">
+                                    <th>Name</th>
+                                    <th>Message</th>
+                                    <th>Date</td>
+                                  </tr>
+                                {{/if}}
+                                {{#if users}}
+                                  <tr class="danger">
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Email</td>
+                                    <th>Id</td>
+                                  </tr>
+                                {{/if}}
+
+                                  <tbody "{{# each items }} ">
+                                      <tr>
+                                        <td>{{ this.username }}</td>
+                                    <td>{{ this.message }}</td>
+                                    <td>{{ this.date }}</td>
+                                        </tr>
+                                   </tbody   {{/each}}>
+
+                                   <tbody "{{# each users }} ">
+                                      <tr>
+                                        <td>{{ this.name }}</td>
+                                    <td>{{ this.username }}</td>
+                                    <td>{{ this.email}}</td>
+                                     <td>{{ this._id}}</td>
+                                        </tr>
+                                   </tbody   {{/each}}>
+                                </table><br>
+                    </div>
+            </div>
+        </div>
+
+</div> <!-- main panel end tag -->
+
+<div class="container">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+
+                     {{#if errors}}
+                              {{#each errors}}
+                                <div class="alert alert-danger">{{msg}}</div>
+                              {{/each}}
+                        {{/if}}
+                <form action="/admin/insert" method="post">
+                        <div class="col-xs-6 ">
+                    <label for="title">Name</label>
+                <input type="text" class="form-control input" placeholder="Name" name="name">
+                 </div><div class="col-xs-6 ">
+                    <label for="content">username</label>
+                <input type="text" class="form-control input" placeholder="Username" name="username">
+                 </div><div class="col-xs-6 ">
+                    <label for="author">E-Mail</label>
+                <input type="email" class="form-control input" placeholder="Email" name="email">     
+                 </div><div class="col-xs-6 ">                 
+                    <label for="author">Password</label>
+                <input type="password" class="form-control input" placeholder="Password" name="password">
+                 </div><div class="col-xs-6 ">
+                    <label for="author">Re-Enter Password</label>
+                <input type="password" class="form-control input" placeholder="Password" name="password2">
+                        <button type="submit" class="btn btn-info">INSERT</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </form>      
+        </div>
+        <div class="modal-footer">
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+<div class="container">
+  <div class="modal fade" id="del" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+             
+                        {{#if errors}}
+                              {{#each errors}}
+                                <div class="alert alert-danger">{{msg}}</div>
+                              {{/each}}
+                        {{/if}}
+                <form action="/admin/delete" method="post">
+                     
+                    <div class="col-xs-6 ">
+                    <input type="text" class="form-control input" id="id" name="id" placeholder="id">
+                    </div>    <button type="submit" class="btn btn-danger">DELETE</button>
+                    
+                </form>
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
