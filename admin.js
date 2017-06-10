@@ -82,7 +82,7 @@ app.use('/', routes);
 app.use('/admin', admin);
 
 // Set Port
-app.set('port', (process.env.PORT || 8088));
+app.set('port', (process.env.PORT || 80));
 
 var server = app.listen(app.get('port'), function(){
 	console.log('Server started on port '+app.get('port'));
