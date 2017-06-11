@@ -18,7 +18,7 @@ var Schema = mongoose.Schema({
 	}
 });
 
-var User = module.exports = mongoose.model('agents', Schema);
+var User = module.exports = mongoose.model('users', Schema);
 
 
 
