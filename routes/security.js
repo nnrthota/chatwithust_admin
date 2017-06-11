@@ -14,5 +14,7 @@ function ensureAuthenticated(req, res, next) {
         res.redirect('/admin/login');
     }
 }
-
+router.get('/', ensureAuthenticated, function(req, res){
+	res.redirect('/admin/login');
+});
 module.exports = router;
