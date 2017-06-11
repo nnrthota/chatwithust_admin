@@ -25,8 +25,8 @@ function ensureAuthenticated(req, res, next) {
 router.get('/login', function(req, res){
 	res.render('login');
 });
-router.get('/',function(req, res){
-  res.redirect('/chat/login');
+router.get('/',ensureAuthenticated,function(req, res){
+  res.redirect('/admin/login');
 });
 //get data
 router.get('/getChatHistory',ensureAuthenticated, function(req, res, next) {
