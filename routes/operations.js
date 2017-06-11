@@ -26,7 +26,7 @@ router.get('/login', function(req, res){
 	res.render('login');
 });
 //get data
-router.get('/getChatHistory', function(req, res, next) {
+router.get('/getChatHistory',ensureAuthenticated, function(req, res, next) {
   var resultArray = [];
   mongo.connect('mongodb://narendranath:Naththota.1@ds028540.mlab.com:28540/chatwithust', function(err, db) {
     var cursor = db.collection('messages').find();
@@ -38,7 +38,7 @@ router.get('/getChatHistory', function(req, res, next) {
     });
   });
 });
-router.get('/listUsers', function(req, res, next) {
+router.get('/listUsers',ensureAuthenticated, function(req, res, next) {
   var resultUsers = [];
   mongo.connect('mongodb://narendranath:Naththota.1@ds028540.mlab.com:28540/chatwithust', function (err, db) {
     var cursor = db.collection('users').find();
@@ -52,7 +52,7 @@ router.get('/listUsers', function(req, res, next) {
 });
 
 
-router.post('/delete', function(req, res, next) {
+router.post('/delete',ensureAuthenticated, function(req, res, next) {
   var id = req.body.id;
   req.checkBody('id', 'ID is required').notEmpty();
   var errors = req.validationErrors();
