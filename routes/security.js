@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // Get Homepage
-router.get('/admin/dashboard', function (req, res) {
+router.get('/admin/dashboard',ensureAuthenticated, function (req, res) {
     res.render('dashboard');
 });
 
