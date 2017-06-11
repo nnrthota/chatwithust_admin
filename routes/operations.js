@@ -5,7 +5,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
-mongoose.connect('mongodb://localhost/login');
+mongoose.connect('mongodb://narendranath:Naththota.1@ds028540.mlab.com:28540/chatwithust');
 var db=mongoose.connction;  
 
 var User = require('../models/user');
@@ -28,7 +28,7 @@ router.get('/login', function(req, res){
 //get data
 router.get('/getChatHistory', function(req, res, next) {
   var resultArray = [];
-  mongo.connect('mongodb://localhost/login', function(err, db) {
+  mongo.connect('mongodb://narendranath:Naththota.1@ds028540.mlab.com:28540/chatwithust', function(err, db) {
     var cursor = db.collection('messages').find();
     cursor.forEach(function(doc, err) {
       resultArray.push(doc);
@@ -40,7 +40,7 @@ router.get('/getChatHistory', function(req, res, next) {
 });
 router.get('/listUsers', function(req, res, next) {
   var resultUsers = [];
-  mongo.connect('mongodb://localhost/login', function (err, db) {
+  mongo.connect('mongodb://narendranath:Naththota.1@ds028540.mlab.com:28540/chatwithust', function (err, db) {
     var cursor = db.collection('users').find();
     cursor.forEach(function(doc, err) {
       resultUsers.push(doc);
@@ -65,7 +65,7 @@ router.post('/delete', function(req, res, next) {
 		res.render('dashboard');
 	}else {  
 
-	    mongo.connect('mongodb://localhost/login', function (err, db) {
+	    mongo.connect('mongodb://narendranath:Naththota.1@ds028540.mlab.com:28540/chatwithust', function (err, db) {
     db.collection('users').deleteOne({"_id": objectId(id)}, function(err, result) {
       db.close();
       if(err) throw err;
