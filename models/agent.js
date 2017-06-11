@@ -19,7 +19,7 @@ var Schema = mongoose.Schema({
 });
 
 
-var Agent = module.exports = mongoose.model('age', Schema);
+var Agent = module.exports = mongoose.model('agents', Schema);
 
 module.exports.getUserByUsername = function(username, callback){
 	var query = {username: username};
