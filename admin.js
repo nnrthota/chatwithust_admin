@@ -12,7 +12,7 @@ var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 
 //connect to the mongoosedb
-mongoose.connect('mongodb://localhost/login');
+mongoose.connect('mongodb://narendranath:Naththota.1@ds028540.mlab.com:28540/chatwithust');
 var db=mongoose.connction;   
 
 // Init App
